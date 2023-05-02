@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "doublehash.h": "c"
+        "doublehash.h": "c",
+        "mysearch.h": "c"
     }
 }
