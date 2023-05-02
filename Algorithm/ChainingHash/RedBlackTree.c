@@ -6,8 +6,8 @@ extern RBTNode* NIL;
 RBTNode* RBT_CreateNode(KeyType key, ValueType value) {
     RBTNode* new_node = (RBTNode*) malloc(sizeof(RBTNode));
     new_node->parent = NULL;
-    new_node->left = NULL;
-    new_node->right = NULL;
+    new_node->left = NIL;
+    new_node->right = NIL;
     new_node->color = BLACK;
 
     new_node->key = (char*)malloc(sizeof(char) * (strlen(key) + 1));
@@ -25,6 +25,7 @@ void RBT_DestroyNode(RBTNode* node) {
 
 /* Red Black Tree 구조 전체 소멸 */
 void RBT_DestroyTree(RBTNode* tree) {
+    if (tree == NULL) return;
     if (tree->left != NIL)  RBT_DestroyTree(tree->left);
     if (tree->right != NIL) RBT_DestroyTree(tree->right);
     RBT_DestroyNode(tree);
