@@ -1,25 +1,25 @@
-# **ÇÇº¸³ªÄ¡ ¼ö ±¸ÇÏ±â**
+# **í”¼ë³´ë‚˜ì¹˜ ìˆ˜ êµ¬í•˜ê¸°**
 
-ÇÇº¸³ªÄ¡¼ö¸¦ ±¸ÇÏ´Â ¹æ¹ýÀ¸·Î 3°¡Áö¸¦ ±¸ÇöÇØ º¸¾Ò´Ù.
+í”¼ë³´ë‚˜ì¹˜ìˆ˜ë¥¼ êµ¬í•˜ëŠ” ë°©ë²•ìœ¼ë¡œ 3ê°€ì§€ë¥¼ êµ¬í˜„í•´ ë³´ì•˜ë‹¤.
 
-### **1. Àç±Í**
+### **1. ìž¬ê·€**
 
-Àç±Í¸¦ ÀÌ¿ëÇÏ¿© ÇÇº¸³ªÄ¡ ¼ö¸¦ ±¸ÇöÇÏ¸é $O(2^N)$ÀÇ ½Ã°£º¹Àâµµ·Î $n$¹øÂ° ÇÇº¸³ªÄ¡ ¼ö¸¦ ±¸ÇÒ ¼ö ÀÖ´Ù.
+ìž¬ê·€ë¥¼ ì´ìš©í•˜ì—¬ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ë¥¼ êµ¬í˜„í•˜ë©´ $O(2^N)$ì˜ ì‹œê°„ë³µìž¡ë„ë¡œ $n$ë²ˆì§¸ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ë¥¼ êµ¬í•  ìˆ˜ ìžˆë‹¤.
 
 ### **2. DP**
 
-dp¸¦ ÀÌ¿ëÇÏ¿© ÇÇº¸³ªÄ¡ ¼ö¸¦ ±¸ÇöÇÏ¸é, ¹è¿­À» ¼øÈ¸ÇÏ¸é¼­ $O(N)$ÀÇ ½Ã°£º¹Àâµµ·Î $n$¹øÂ° ÇÇº¸³ªÄ¡ ¼ö¸¦ ±¸ÇÒ ¼ö ÀÖ´Ù.
+dpë¥¼ ì´ìš©í•˜ì—¬ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ë¥¼ êµ¬í˜„í•˜ë©´, ë°°ì—´ì„ ìˆœíšŒí•˜ë©´ì„œ $O(N)$ì˜ ì‹œê°„ë³µìž¡ë„ë¡œ $n$ë²ˆì§¸ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ë¥¼ êµ¬í•  ìˆ˜ ìžˆë‹¤.
 
 * **[bottom_up]**
 
-    tabulationÀ» »ç¿ëÇÏ´Â ¹æ¹ýÀ¸·Î ±¸ÇöÇÑ ÄÚµåÀÇ ¹æ½ÄÀÌ´Ù.
+    tabulationì„ ì‚¬ìš©í•˜ëŠ” ë°©ë²•ìœ¼ë¡œ êµ¬í˜„í•œ ì½”ë“œì˜ ë°©ì‹ì´ë‹¤.
 
 * **[top_down]**
 
-    ¸Þ¸ðÀÌÁ¦ÀÌ¼ÇÀ» ÀÌ¿ëÇÏ´Â ¹æ¹ýÀ¸·Î ´ÙÀ½°ú °°ÀÌ ±¸Çö °¡´ÉÇÏ´Ù.
+    ë©”ëª¨ì´ì œì´ì…˜ì„ ì´ìš©í•˜ëŠ” ë°©ë²•ìœ¼ë¡œ ë‹¤ìŒê³¼ ê°™ì´ êµ¬í˜„ ê°€ëŠ¥í•˜ë‹¤.
 
-    ```c
-    int dp[n+1];
+    ``` c
+    int dp[n+1] = {0, };
     int fibonacci(int n) {
         if (n <= 1) return n;
 
@@ -28,34 +28,50 @@ dp¸¦ ÀÌ¿ëÇÏ¿© ÇÇº¸³ªÄ¡ ¼ö¸¦ ±¸ÇöÇÏ¸é, ¹è¿­À» ¼øÈ¸ÇÏ¸é¼­ $O(N)$ÀÇ ½Ã°£º¹Àâµµ·Î $n
     }
     ```
 
-### **3. ºÐÇÒÁ¤º¹À» ÀÌ¿ëÇÑ Çà·Ä °ö¼À**
-ÇÇº¸³ªÄ¡ ¼öÀÇ Á¡È­½ÄÀº $F_{n+1} = F_n + F_{n-1}$ ÀÎµ¥, ÀÌ¸¦ Çà·Ä·Î ³ªÅ¸³»¸é $\begin{pmatrix} F_{n+1} \\ F_n \end{pmatrix} = \begin{pmatrix} 1&1\\1&0 \end{pmatrix} \begin{pmatrix} F_n \\ F_{n-1} \end{pmatrix}$ ÀÌ´Ù.
+### **3. ë¶„í• ì •ë³µì„ ì´ìš©í•œ í–‰ë ¬ ê³±ì…ˆ**
+í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì˜ ì í™”ì‹ì€ $F_{n+1} = F_n + F_{n-1}$ ì¸ë°, ì´ë¥¼ í–‰ë ¬ë¡œ ë‚˜íƒ€ë‚´ë©´ ë‹¤ìŒê³¼ ê°™ë‹¤.
 
-¿©±â¼­ $\begin{pmatrix} F_n \\ F_{n-1} \end{pmatrix} = \begin{pmatrix} 1&1\\1&0 \end{pmatrix} \begin{pmatrix} F_{n-1} \\ F_{n-2} \end{pmatrix}$ ÀÌ¹Ç·Î ÀÌ¸¦ ´ëÀÔÇÏ¿© Â÷¼ö¸¦ ÁÙ¿©°¡¸é ´ÙÀ½°ú °°´Ù.
+$$
+\begin{pmatrix} F_{n+1} \\\\ F_n \end{pmatrix}\ =\ 
+\begin{pmatrix} 1&1\\\\1&0 \end{pmatrix} \begin{pmatrix} F_n \\\\ F_{n-1} \end{pmatrix}
+\ \ \ \ \ \ , \ \ \ \ \ \ 
+\begin{pmatrix} F_n \\\\ F_{n-1} \end{pmatrix}\ =\ 
+\begin{pmatrix} 1&1\\\\1&0 \end{pmatrix} \begin{pmatrix} F_{n-1} \\\\ F_{n-2} \end{pmatrix}
+$$
 
-$\begin{pmatrix} F_{n+1} \\ F_n \end{pmatrix}\  =\  \begin{pmatrix} 1&1\\1&0 \end{pmatrix} \begin{pmatrix} F_n \\ F_{n-1} \end{pmatrix}\  =\  \begin{pmatrix} 1&1\\1&0 \end{pmatrix}^2 \begin{pmatrix} F_{n-1} \\ F_{n-2} \end{pmatrix} \ = \ ... \ =\  \begin{pmatrix} 1&1\\1&0 \end{pmatrix}^n \begin{pmatrix} F_1 \\ F_0 \end{pmatrix}\  = \ \begin{pmatrix} 1&1\\1&0 \end{pmatrix}^n \begin{pmatrix} 1 \\ 0 \end{pmatrix}$
+ì—¬ê¸°ì„œ ìœ„ì˜ ë‘ì‹ì„ ëŒ€ìž…í•˜ì—¬ ì°¨ìˆ˜ë¥¼ ì¤„ì—¬ê°€ë©´ ë‹¤ìŒê³¼ ê°™ë‹¤.
 
-¿©±â¼­ Çà·ÄÀÇ °ÅµìÁ¦°öÀº ºÐÇÒ Å½»öÀ» ÀÌ¿ëÇÏ¸é $O(log_2N)$ÀÇ ½Ã°£º¹Àâµµ·Î ±¸ÇÒ ¼ö ÀÖÀ¸¹Ç·Î, °á·ÐÀûÀ¸·Î $O(log_2N)$ÀÇ ½Ã°£º¹Àâµµ·Î ÇÇº¸³ªÄ¡ ¼ö¸¦ ±¸ÇÒ ¼ö ÀÖ´Ù.
+$$
+\begin{pmatrix} F_{n+1} \\\\ F_n \end{pmatrix}\ =\ 
+\begin{pmatrix} 1&1\\\\1&0 \end{pmatrix} \begin{pmatrix} F_n \\\\ F_{n-1} \end{pmatrix}\ =\ 
+\begin{pmatrix} 1&1\\\\1&0 \end{pmatrix}^2 \begin{pmatrix} F_{n-1} \\\\ F_{n-2} \end{pmatrix}\ =\ 
+... 
+\ =\ 
+\begin{pmatrix} 1&1\\\\1&0 \end{pmatrix}^n \begin{pmatrix} F_1 \\\\ F_0 \end{pmatrix}\ =\ 
+\begin{pmatrix} 1&1\\\\1&0 \end{pmatrix}^n \begin{pmatrix} 1 \\\\ 0 \end{pmatrix}
+$$
+
+ì—¬ê¸°ì„œ í–‰ë ¬ì˜ ê±°ë“­ì œê³±ì€ ë¶„í•  íƒìƒ‰ì„ ì´ìš©í•˜ë©´ $O(log_2N)$ì˜ ì‹œê°„ë³µìž¡ë„ë¡œ êµ¬í•  ìˆ˜ ìžˆìœ¼ë¯€ë¡œ, ê²°ë¡ ì ìœ¼ë¡œ $O(log_2N)$ì˜ ì‹œê°„ë³µìž¡ë„ë¡œ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ë¥¼ êµ¬í•  ìˆ˜ ìžˆë‹¤.
 
 ---
-## **½Ã°£º¹Àâµµ Á¤¸®**
+## **ì‹œê°„ë³µìž¡ë„ ì •ë¦¬**
 
-| Àç±Í | µ¿Àû °èÈ¹¹ý | ºÐÇÒÁ¤º¹À» ÀÌ¿ëÇÑ Çà·Ä Á¦°ö |
+| ìž¬ê·€ | ë™ì  ê³„íšë²• | ë¶„í• ì •ë³µì„ ì´ìš©í•œ í–‰ë ¬ ì œê³± |
 |:------:|:--------:|:-------------------------:|
 |$O(2^N)$|   $O(N)$ |       $O(log_2N)$         |
 
 
 ---
-## °á°ú 1
+## ê²°ê³¼ 1
 
-ÀÌ ½ÇÇà°á°ú¿¡¼­ º¼ ¼ö ÀÖµíÀÌ, 45¹øÂ° ÇÇº¸³ªÄ¡ ¼ö¸¦ ±¸ÇÒ ¶§ Àç±ÍÀÇ °æ¿ì $O(2^{45}) \approx O(3\times10^{13})$ À¸·Î ¸Å¿ì Å« ½ÇÇà È½¼ö°¡ ³ª¿À¹Ç·Î ¸¹Àº ½Ã°£ÀÌ °É·ÈÁö¸¸, ¼±ÇüÀÌ³ª log½ºÄÉÀÏÀÇ °æ¿ì´Â 0.001ÃÊ ¹Ì¸¸ÀÇ ¼Óµµ°¡ °É¸°´Ù.
+ì´ ì‹¤í–‰ê²°ê³¼ì—ì„œ ë³¼ ìˆ˜ ìžˆë“¯ì´, 45ë²ˆì§¸ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ë¥¼ êµ¬í•  ë•Œ ìž¬ê·€ì˜ ê²½ìš° $O(2^{45}) \approx O(3\times10^{13})$ ìœ¼ë¡œ ë§¤ìš° í° ì‹¤í–‰ íšŸìˆ˜ê°€ ë‚˜ì˜¤ë¯€ë¡œ ë§Žì€ ì‹œê°„ì´ ê±¸ë ¸ì§€ë§Œ, ì„ í˜•ì´ë‚˜ logìŠ¤ì¼€ì¼ì˜ ê²½ìš°ëŠ” 0.001ì´ˆ ë¯¸ë§Œì˜ ì†ë„ê°€ ê±¸ë¦°ë‹¤.
 
- ![½ÇÇà°á°ú1](1.png)
+ ![ì‹¤í–‰ê²°ê³¼1](1.png)
 
 ---
 
-## °á°ú 2
+## ê²°ê³¼ 2
 
-$ n = 10^{9}$ ÀÏ¶§ Àç±ÍÀÇ °æ¿ì´Â ¸Å¿ì Å« ½Ã°£ÀÌ °É¸®¹Ç·Î Á¦¿ÜÇÏ°í, dp¿Í ºÐÇÒÁ¤º¹À» ºñ±³ÇÏ¸é dpÀÇ °æ¿ì´Â $O(N)$ÀÌ¹Ç·Î Å« ½Ã°£ÀÌ °É¸®Áö¸¸, ºÐÇÒÁ¤º¹Àº $O(log_2N)$À¸·Î ¸Å¿ì ÀûÀº ½Ã°£À¸·Î °è»êÇÒ ¼ö ÀÖ¾ú´Ù.
+$ n = 10^{9}$ ì¼ë•Œ ìž¬ê·€ì˜ ê²½ìš°ëŠ” ë§¤ìš° í° ì‹œê°„ì´ ê±¸ë¦¬ë¯€ë¡œ ì œì™¸í•˜ê³ , dpì™€ ë¶„í• ì •ë³µì„ ë¹„êµí•˜ë©´ dpì˜ ê²½ìš°ëŠ” $O(N)$ì´ë¯€ë¡œ í° ì‹œê°„ì´ ê±¸ë¦¬ì§€ë§Œ, ë¶„í• ì •ë³µì€ $O(log_2N)$ìœ¼ë¡œ ë§¤ìš° ì ì€ ì‹œê°„ìœ¼ë¡œ ê³„ì‚°í•  ìˆ˜ ìžˆì—ˆë‹¤.
 
-![½ÇÇà°á°ú1](2.png)
+![ì‹¤í–‰ê²°ê³¼1](2.png)
