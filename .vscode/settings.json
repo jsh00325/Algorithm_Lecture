@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "doublehash.h": "c",
-        "mysearch.h": "c"
+        "mysearch.h": "c",
+        "matrix.h": "c",
+        "fibonacci.h": "c"
     }
 }
