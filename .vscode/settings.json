@@ -3,6 +3,7 @@
         "doublehash.h": "c",
         "mysearch.h": "c",
         "matrix.h": "c",
-        "fibonacci.h": "c"
+        "fibonacci.h": "c",
+        "stdlib.h": "c"
     }
 }
