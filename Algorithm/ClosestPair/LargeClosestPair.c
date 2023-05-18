@@ -95,7 +95,7 @@ TwoPoint naiveLength(const int pIdx[], int st, int en) {
 int isLeftOfMidPoint(int targetIdx, int midIdx) {
     if (point[targetIdx].x < point[midIdx].x) return 1;
     if (point[midIdx].x < point[targetIdx].x) return 0;
-    if (point[targetIdx].y < point[midIdx].y) return 1;
+    if (point[targetIdx].y <= point[midIdx].y) return 1;
     else return 0;
 }
 
