@@ -1,15 +1,10 @@
 import random as rd
 
-minX, maxX = 0, 2000000000
-minY, maxY = 0, 2000000000
-pointCount = 3000000
-
-rslt = []
-while len(rslt) < pointCount :
-    point = (rd.randint(minX, maxX), rd.randint(minY, maxY))
-    rslt.append(point)
+minX, maxX = -500, 500
+minY, maxY = -500, 500
+pointCount = 200
 
 with open("input.txt", "w") as f :
     f.write(f'{pointCount}\n')
-    for point in rslt :
+    for point in [(rd.randint(minX, maxX), rd.randint(minY, maxY)) for _ in range(pointCount)] :
         f.write(f'{point[0]} {point[1]}\n')
