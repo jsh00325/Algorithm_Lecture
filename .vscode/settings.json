@@ -4,6 +4,7 @@
         "mysearch.h": "c",
         "matrix.h": "c",
         "fibonacci.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "singlelinkedlist.h": "c"
     }
 }
