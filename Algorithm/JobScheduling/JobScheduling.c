@@ -4,9 +4,6 @@ typedef struct {
     int start, end;
 } Task;
 
-// 새로운 task 구조체 생성 & 반환
-Task* create_task(int start, int end);
-
 /** print_list에서 task 정보를 출력하기 위한 함수
  *  @param data 출력하고자 하는 task */
 void print_task(void* data);
@@ -40,17 +37,11 @@ int main() {
         printf("Mach%d :\t", idx);
         print_list(cur_mach_list, print_task);
         printf("\n");
+        destroy_list(cur_mach_list);
         cur_mach = cur_mach->next;
     }
     destroy_list(machines);
     free(tasks);
-}
-
-Task* create_task(int start, int end) {
-    Task* new_task = (Task*) malloc(sizeof(Task));
-    new_task->start = start;
-    new_task->end = end;
-    return new_task;
 }
 
 void print_task(void* data) {
