@@ -1,6 +1,6 @@
 import random as rd
 
-n, range1, range2 = 16, 100, 200
+n, range1, range2 = 12, 100, 200
 ans = [[0]*n for _ in range(n)]
 for i in range(n) :
     for j in range(i+1, n) :

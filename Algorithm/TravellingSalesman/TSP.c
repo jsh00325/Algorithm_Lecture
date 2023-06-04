@@ -38,7 +38,7 @@ int main() {
     }
 
     // 각 방법에서의 계산 결과와 시간 출력
-    // backtracking();
+    backtracking();
     dynamicProgramming();
 
     for (int i = 0; i < n; i++) free(adjacency_edge[i]);
